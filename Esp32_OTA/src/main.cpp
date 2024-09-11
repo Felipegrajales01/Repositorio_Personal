@@ -10,15 +10,16 @@ void setup() {
   Serial.println("Nueva version");
   pinMode(2,OUTPUT);
   digitalWrite(2,LOW);
-  setupOTA("ESP32-Felipe", MI_WIFI, MI_PASS);
+  setupOTA("Esp32-Felipe", MI_WIFI, MI_PASS);
 }
 
+
 void loop() {
-#ifdef defined(ESP32_RTOS) && defined(ESP32)
+#ifdef  defined(ESP32_RTOS) && defined(ESP32)
 #else // If you do not use FreeRTOS, you have to regulary call the handle method.
   ArduinoOTA.handle();
 #endif
-  delay(500);
+  delay(300);
   digitalWrite(2,HIGH);
   delay(300);
   digitalWrite(2,LOW);
