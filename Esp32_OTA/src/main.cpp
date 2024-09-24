@@ -19,8 +19,8 @@ void loop() {
 #else // If you do not use FreeRTOS, you have to regulary call the handle method.
   ArduinoOTA.handle();
 #endif
-  delay(300);
+  delay(1000);
   digitalWrite(2,HIGH);
-  delay(300);
+  delay(1000);
   digitalWrite(2,LOW);
 }
