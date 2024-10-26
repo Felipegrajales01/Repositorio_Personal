@@ -25,7 +25,6 @@
 #include <WiFi.h>
 #include <libiot.h>
 #include <libwifi.h>
-#include <libdisplay.h>
 
 SensorData data;  // Estructura para almacenar los datos de temperatura y humedad del SHT21
 time_t hora;      // Timestamp de la hora actual
@@ -37,8 +36,6 @@ void setup() {
   Serial.begin(115200);     // Paso 1. Inicializa el puerto serie
   listWiFiNetworks();       // Paso 2. Lista las redes WiFi disponibles
   delay(1000);              // -- Espera 1 segundo para ver las redes disponibles
-  startDisplay();           // Paso 3. Inicializa la pantalla OLED
-  displayConnecting(ssid);  // Paso 4. Muestra en la pantalla el mensaje de "Conectandose a :" y luego el nombre de la red a la que se conecta
   startWiFi("");            // Paso 5. Inicializa el servicio de WiFi
   setupIoT();               // Paso 6. Inicializa el servicio de IoT
   hora = setTime();         // Paso 7. Ajusta el tiempo del dispositivo con servidores SNTP
@@ -50,7 +47,10 @@ void loop() {
   checkMQTT();                                                   // Paso 2. Verifica la conexión al servidor MQTT y si no está conectado, intenta reconectar
   String message = checkAlert();                                 // Paso 3. Verifica si hay alertas y las retorna en caso de haberlas
   if(measure(&data)){                                            // Paso 4. Realiza una medición de temperatura y humedad
-    displayLoop(message, hora, data.temperature, data.humidity); // Paso 5. Muestra en la pantalla el mensaje recibido, las medidas de temperatura y humedad
+    Serial.println(message);
+    Serial.println(hora);
+    Serial.println(data.temperature);
+    Serial.println(data.humidity);                               // Paso 5. Muestra en el puerto serial el mensaje recibido, las medidas de temperatura y humedad
     sendSensorData(data.temperature, data.humidity);             // Paso 6. Envía los datos de temperatura y humedad al servidor MQTT
   }   
 }

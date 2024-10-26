@@ -116,9 +116,10 @@ void setupIoT() {
  * Configura el sensor SHT21
  */
 void setupSHT() {
+  
   if (sht.init()) Serial.print("SHT init(): Exitoso\n");
   else Serial.print("SHT init(): Fallido\n");
-  sht.setAccuracy(SHTSensor::SHT_ACCURACY_MEDIUM); // soportado solo por el SHT3x
+  
 }
 
 

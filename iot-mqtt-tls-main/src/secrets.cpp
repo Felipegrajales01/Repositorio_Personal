@@ -46,8 +46,8 @@
 
 // Variables de configuración de la red WiFi
 // Cambia estos valores por los de su red WiFi
-#define SSID "TU_RED"                             ///< Cambia por el nombre de tu red WiFi
-#define PASSWORD "TU_PASSWIFI"                    ///< Cambia por la contraseña de tu red WiFi
+#define SSID "Red"                             ///< Cambia por el nombre de tu red WiFi
+#define PASSWORD "Felipe1701"                    ///< Cambia por la contraseña de tu red WiFi
 
 /*********** Fin de parametros configurables por el usuario ***********/
 

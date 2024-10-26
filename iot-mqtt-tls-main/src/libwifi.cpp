@@ -1,7 +1,6 @@
 #include <WiFiClient.h>
 #include <WiFi.h>
 #include <libwifi.h>
-#include <libdisplay.h>
 
 
 
@@ -17,7 +16,6 @@ void checkWiFi() {
     while (WiFi.waitForConnectResult() != WL_CONNECTED){
       WiFi.begin(ssid, password);
       Serial.print(".");
-      displayNoSignal();
       delay(10);
     }
     Serial.println("Conectado");
@@ -54,8 +52,6 @@ String getHostname() {
  * Inicia el servicio de WiFi e intenta conectarse a la red WiFi específicada en las constantes.
  */
 void startWiFi(String hostname) {
-  if(hostname.length() == 0) hostname = getHostname();
-  WiFi.hostname(hostname);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   Serial.println("(\n\nIntentando conectar a SSID: ");
